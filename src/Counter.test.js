@@ -1,4 +1,4 @@
-import React from 'react'; // No need to import act if not using directly
+import React from 'react'; 
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import Counter from './Counter';
 
@@ -11,7 +11,7 @@ test('increments count', () => {
     render(<Counter />);
     const incrementButton = screen.getByText(/Increment/i);
     
-    // Wrap the click event in act
+
     act(() => {
         fireEvent.click(incrementButton);
     });
@@ -22,8 +22,6 @@ test('increments count', () => {
 test('decrements count', () => {
     render(<Counter />);
     const decrementButton = screen.getByText(/Decrement/i);
-    
-    // Wrap the click event in act
     act(() => {
         fireEvent.click(decrementButton);
     });
