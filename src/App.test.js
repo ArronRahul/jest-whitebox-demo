@@ -10,6 +10,6 @@ test('renders Simple Counter App header', () => {
 
 test('renders Counter component', () => {
     render(<App />);
-    const counterElement = screen.getByText(/counter:/i); // Update here
+    const counterElement = screen.getByText(/counter:/i); 
     expect(counterElement).toBeInTheDocument();
 });
