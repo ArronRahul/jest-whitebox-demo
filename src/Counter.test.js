@@ -1,23 +1,32 @@
-import Counter from "./Counter";
-
-import { render, screen, fireEvent } from '@testing-library/react';
-
+import React from 'react'; // No need to import act if not using directly
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import Counter from './Counter';
 
 test('renders Counter component', () => {
     render(<Counter />);
-    expect(screen.getByTest(/Counter: 0/i)).toBeInTheDocument();
+    expect(screen.getByText(/Counter: 0/i)).toBeInTheDocument();
 });
 
 test('increments count', () => {
     render(<Counter />);
     const incrementButton = screen.getByText(/Increment/i);
-    fireEvent.click(incrementButton);
+    
+    // Wrap the click event in act
+    act(() => {
+        fireEvent.click(incrementButton);
+    });
+
     expect(screen.getByText(/Counter: 1/i)).toBeInTheDocument();
 });
 
 test('decrements count', () => {
     render(<Counter />);
     const decrementButton = screen.getByText(/Decrement/i);
-    fireEvent.click(decrementButton);
+    
+    // Wrap the click event in act
+    act(() => {
+        fireEvent.click(decrementButton);
+    });
+
     expect(screen.getByText(/Counter: -1/i)).toBeInTheDocument();
 });
